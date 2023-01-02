@@ -15,8 +15,8 @@ class Collection(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=255)
-    slug = models.SlugField(null=True) #a-url-seperated-with-hyphen
-    descrption = models.TextField()
+    slug = models.SlugField(null=True) #a-url-separated-with-hyphen
+    description = models.TextField()
     unit_price = models.DecimalField(max_digits=6, decimal_places=2) #9999.99
     inventory = models.IntegerField()
     last_update = models.DateTimeField(auto_now=True)
@@ -49,12 +49,12 @@ class Customer(models.Model):
 class Order(models.Model):
     PAYMENT_STATUS_PENDING = 'P'
     PAYMENT_STATUS_COMPLETE = 'C'
-    PAYMENT_STATUS_FALIED = 'F'
+    PAYMENT_STATUS_FAILED = 'F'
 
     PAYMENT_STATUS_CHOICES = [
         (PAYMENT_STATUS_PENDING,'Pending'),
         (PAYMENT_STATUS_COMPLETE,'Complete'),
-        {PAYMENT_STATUS_FALIED,'Failed'}
+        {PAYMENT_STATUS_FAILED,'Failed'}
     ]
     placed_at = models.DateTimeField(auto_now=True)
     payment_status = models.CharField(choices=PAYMENT_STATUS_CHOICES, max_length=6, default=PAYMENT_STATUS_PENDING)
